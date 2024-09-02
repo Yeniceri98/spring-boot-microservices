@@ -13,3 +13,9 @@ _____ user-microservice _____
 
 Docker Run:
 docker run -d --name userservice-mongo -p 27017:27017 -e MONGO_INITDB_DATABASE=userdb mongo:latest
+
+MongoDB Compass: https://www.mongodb.com/try/download/compass
+
+- "userdb" adıyla db oluşturuldu (application.propeties'de yazan)
+- MongoSH terminaline girip use userdb komutuyla userdb'ye geçiş yapıldı
+- Okuma yazma işlemlerini yapabilmek adına db.createUser({user: "user",pwd: "123",roles: ["readWrite","dbAdmin"]}) komutuyla user oluşturuldu
