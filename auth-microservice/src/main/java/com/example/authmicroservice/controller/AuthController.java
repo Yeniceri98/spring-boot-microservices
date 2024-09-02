@@ -26,7 +26,7 @@ public class AuthController {
     @Tag(name = "Register")
     @PostMapping(RestApis.REGISTER)
     public ResponseEntity<Auth> register(@RequestBody RegisterRequestDto registerDto) {
-        if(!registerDto.getPassword().equals(registerDto.getRepassword()))
+        if (!registerDto.getPassword().equals(registerDto.getRepassword()))
             throw new RuntimeException("Passwords don't match!");
         return new ResponseEntity<>(service.register(registerDto), HttpStatus.OK);
     }
