@@ -3,6 +3,7 @@ package com.example.usermicroservice.controller;
 import com.example.usermicroservice.config.RestApis;
 import com.example.usermicroservice.document.UserProfile;
 import com.example.usermicroservice.dto.CreateUserRequestDto;
+import com.example.usermicroservice.dto.UserProfileResponseDto;
 import com.example.usermicroservice.service.UserProfileService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class UserProfileController {
 
     @Tag(name = "Get All Users")
     @GetMapping(RestApis.GET_ALL)
-    public ResponseEntity<List<UserProfile>> getAllUsers() {
+    public ResponseEntity<List<UserProfileResponseDto>> getAllUsers() {
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
     }
 }
