@@ -1,13 +1,13 @@
-package com.example.user_microservice;
+package com.example.authmicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserMicroserviceApplication {
+public class AuthMicroserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserMicroserviceApplication.class, args);
+		SpringApplication.run(AuthMicroserviceApplication.class, args);
 	}
 
 }
