@@ -1,0 +1,15 @@
+_____ auth-microservice _____
+
+Docker Run:
+docker run -d --name authservice-postgres --env POSTGRES_DB=authdb --env POSTGRES_USER=user --env POSTGRES_PASSWORD=123 -p 5432:5432 postgres:latest
+
+pgAdmin4 db check:
+servers sağ tık > register > hostname: 'localhost' > maintenance db: 'postgres' > username: 'user' > password: '123'
+
+
+
+
+_____ user-microservice _____
+
+Docker Run:
+docker run -d --name userservice-mongo -p 27017:27017 -e MONGO_INITDB_DATABASE=userdb mongo:latest
