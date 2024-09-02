@@ -1,4 +1,4 @@
-package com.example.usermicroservice.conroller;
+package com.example.usermicroservice.controller;
 
 import com.example.usermicroservice.config.RestApis;
 import com.example.usermicroservice.document.UserProfile;
