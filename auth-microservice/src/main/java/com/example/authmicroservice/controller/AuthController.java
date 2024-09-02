@@ -1,8 +1,8 @@
 package com.example.authmicroservice.controller;
 
 import com.example.authmicroservice.config.RestApis;
-import com.example.authmicroservice.dto.request.RegisterRequestDto;
-import com.example.authmicroservice.dto.request.LoginRequestDto;
+import com.example.authmicroservice.dto.RegisterRequestDto;
+import com.example.authmicroservice.dto.LoginRequestDto;
 import com.example.authmicroservice.model.Auth;
 import com.example.authmicroservice.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;

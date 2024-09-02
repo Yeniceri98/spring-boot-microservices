@@ -1,4 +1,4 @@
-package com.example.authmicroservice.dto.request;
+package com.example.authmicroservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

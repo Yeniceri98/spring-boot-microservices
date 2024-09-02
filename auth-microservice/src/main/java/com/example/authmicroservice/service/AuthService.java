@@ -1,7 +1,7 @@
 package com.example.authmicroservice.service;
 
-import com.example.authmicroservice.dto.request.RegisterRequestDto;
-import com.example.authmicroservice.dto.request.LoginRequestDto;
+import com.example.authmicroservice.dto.RegisterRequestDto;
+import com.example.authmicroservice.dto.LoginRequestDto;
 import com.example.authmicroservice.model.Auth;
 import com.example.authmicroservice.repository.AuthRepository;
 import org.springframework.stereotype.Service;
