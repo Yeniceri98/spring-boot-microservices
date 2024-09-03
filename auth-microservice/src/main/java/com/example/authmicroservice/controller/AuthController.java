@@ -1,6 +1,7 @@
 package com.example.authmicroservice.controller;
 
 import com.example.authmicroservice.config.RestApis;
+import com.example.authmicroservice.dto.AuthResponseDto;
 import com.example.authmicroservice.dto.RegisterRequestDto;
 import com.example.authmicroservice.dto.LoginRequestDto;
 import com.example.authmicroservice.model.Auth;
@@ -25,15 +26,13 @@ public class AuthController {
 
     @Tag(name = "Register")
     @PostMapping(RestApis.REGISTER)
-    public ResponseEntity<Auth> register(@RequestBody RegisterRequestDto registerDto) {
-        if (!registerDto.getPassword().equals(registerDto.getRepassword()))
-            throw new RuntimeException("Passwords don't match!");
-        return new ResponseEntity<>(service.register(registerDto), HttpStatus.OK);
+    public ResponseEntity<AuthResponseDto> register(@RequestBody RegisterRequestDto registerRequestDto) {
+        return new ResponseEntity<>(service.register(registerRequestDto), HttpStatus.OK);
     }
 
     @Tag(name = "Login")
     @PostMapping(RestApis.LOGIN)
-    public ResponseEntity<Boolean> login(@RequestBody LoginRequestDto loginDto) {
-        return new ResponseEntity<>(service.login(loginDto), HttpStatus.OK);
+    public ResponseEntity<Boolean> login(@RequestBody LoginRequestDto loginRequestDto) {
+        return new ResponseEntity<>(service.login(loginRequestDto), HttpStatus.OK);
     }
 }

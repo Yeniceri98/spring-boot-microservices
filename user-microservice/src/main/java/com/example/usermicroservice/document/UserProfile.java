@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,5 +28,5 @@ public class UserProfile {
     private String instagram;
     private String twitter;
     private Boolean isActive;
-    private Long createdAt;
+    private LocalDate createdAt;
 }

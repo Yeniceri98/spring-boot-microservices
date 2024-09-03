@@ -1,8 +1,7 @@
 package com.example.usermicroservice.controller;
 
 import com.example.usermicroservice.config.RestApis;
-import com.example.usermicroservice.document.UserProfile;
-import com.example.usermicroservice.dto.CreateUserRequestDto;
+import com.example.usermicroservice.dto.UserProfileRequestDto;
 import com.example.usermicroservice.dto.UserProfileResponseDto;
 import com.example.usermicroservice.service.UserProfileService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,14 +23,20 @@ public class UserProfileController {
 
     @Tag(name = "Create User")
     @PostMapping(RestApis.CREATE_USER)
-    public ResponseEntity<Boolean> createUser(@RequestBody CreateUserRequestDto createUserDto) {
-        service.createUser(createUserDto);
-        return new ResponseEntity<>(true, HttpStatus.CREATED);
+    public ResponseEntity<UserProfileRequestDto> createUser(@RequestBody UserProfileRequestDto userProfileRequestDto) {
+        return new ResponseEntity<>(service.createUser(userProfileRequestDto), HttpStatus.CREATED);
     }
 
     @Tag(name = "Get All Users")
     @GetMapping(RestApis.GET_ALL)
     public ResponseEntity<List<UserProfileResponseDto>> getAllUsers() {
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
+    }
+
+    @Tag(name = "Delete User")
+    @DeleteMapping(RestApis.DELETE_USER)
+    public ResponseEntity<String> deleteUser(@PathVariable String id) {
+        service.deleteUser(id);
+        return new ResponseEntity<>("User is deleted with id " + id, HttpStatus.OK);
     }
 }

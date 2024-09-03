@@ -5,12 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class UserProfileResponseDto {
-    private String authId;
+    private String id;
+    private Long authId;
     private String username;
     private String email;
+    private LocalDate createdAt;
 }

@@ -1,6 +1,5 @@
-package com.example.authmicroservice.model;
+package com.example.authmicroservice.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,17 +11,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
-@Table(name = "tbl_auth")
-public class Auth {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class AuthResponseDto {
     private Long id;
-
     private String username;
-    private String password;
     private String email;
-    private Boolean isActive;
-
     private LocalDate createdAt;
 }
