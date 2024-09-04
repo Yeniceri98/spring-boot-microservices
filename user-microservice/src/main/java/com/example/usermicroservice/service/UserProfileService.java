@@ -5,6 +5,7 @@ import com.example.usermicroservice.dto.UserProfileRequestDto;
 import com.example.usermicroservice.dto.UserProfileResponseDto;
 import com.example.usermicroservice.exception.UserNotFoundException;
 import com.example.usermicroservice.repository.UserProfileRepository;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ import java.util.stream.Collectors;
 @Service
 public class UserProfileService {
     private final UserProfileRepository repository;
+    private final CacheManager cacheManager;
 
-    public UserProfileService(UserProfileRepository repository) {
+    public UserProfileService(UserProfileRepository repository, CacheManager cacheManager) {
         this.repository = repository;
+        this.cacheManager = cacheManager;
     }
 
     public UserProfileRequestDto createUser(UserProfileRequestDto userProfileRequestDto) {
@@ -56,6 +59,10 @@ public class UserProfileService {
         }
 
         return result;
+    }
+
+    public void clearCache() {
+        cacheManager.getCache("upper-case").clear();
     }
 
     private UserProfile mapToEntityRequest(UserProfileRequestDto userProfileRequestDto) {
