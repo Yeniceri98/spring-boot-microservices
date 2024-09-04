@@ -5,6 +5,7 @@ import com.example.usermicroservice.dto.UserProfileRequestDto;
 import com.example.usermicroservice.dto.UserProfileResponseDto;
 import com.example.usermicroservice.exception.UserNotFoundException;
 import com.example.usermicroservice.repository.UserProfileRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -36,6 +37,25 @@ public class UserProfileService {
     public void deleteUser(String id) {
         UserProfile user = repository.findById(id).orElseThrow(() -> new UserNotFoundException("User is not found with the id " + id));
         repository.delete(user);
+    }
+
+    @Cacheable("upper-case")
+    public String upperName(String name) {
+        String result = name.toUpperCase();
+
+        /*
+            Örneğin isteği atarken "ahmet" verilirse sürekli "AHMET" cevabı döner
+            Aynı response'un döndüğü durumda her seferinde 3 sn beklemek anlamsızdır
+            Redis eklenip program başlatıldığında ilk istek 3 sn sürer ve metodun girdi çıktıları cachelenir
+            Sonraki istekte bilgi cache'den gelir ve 3 sn beklemeden hızlı bir şekilde response gelir
+        */
+        try {
+            Thread.sleep(3000L);
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+
+        return result;
     }
 
     private UserProfile mapToEntityRequest(UserProfileRequestDto userProfileRequestDto) {

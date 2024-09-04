@@ -39,4 +39,10 @@ public class UserProfileController {
         service.deleteUser(id);
         return new ResponseEntity<>("User is deleted with id " + id, HttpStatus.OK);
     }
+
+    // Redis Purpose
+    @GetMapping("/upper-name")
+    public ResponseEntity<String> upperName(String name) {
+        return new ResponseEntity<>(service.upperName(name), HttpStatus.OK);
+    }
 }
