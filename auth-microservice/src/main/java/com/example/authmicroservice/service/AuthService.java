@@ -4,6 +4,7 @@ import com.example.authmicroservice.dto.AuthResponseDto;
 import com.example.authmicroservice.dto.LoginRequestDto;
 import com.example.authmicroservice.dto.RegisterRequestDto;
 import com.example.authmicroservice.dto.UserProfileRequestDto;
+import com.example.authmicroservice.exception.PasswordsMismatchException;
 import com.example.authmicroservice.feign.UserProfileManager;
 import com.example.authmicroservice.model.Auth;
 import com.example.authmicroservice.repository.AuthRepository;
@@ -35,9 +36,9 @@ public class AuthService {
     }
 
     // After Feign Client Added
-    public AuthResponseDto register(RegisterRequestDto registerRequestDto) {
+    public AuthResponseDto register(RegisterRequestDto registerRequestDto) throws PasswordsMismatchException {
         if (!registerRequestDto.getPassword().equals(registerRequestDto.getRepassword())) {
-            throw new RuntimeException("Passwords don't match!");
+            throw new PasswordsMismatchException("Passwords don't match!");
         }
 
         Auth auth = mapToEntity(registerRequestDto);
