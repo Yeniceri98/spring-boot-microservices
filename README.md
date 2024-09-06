@@ -38,10 +38,9 @@ ___ Creating Dockers Images for Projects ___ <br />
 - At first, Maven > package command should be executed <br />
 - After the execution, there should be .jar file inside the target folder <br />
 - Dockerfile should be created in project's main directory <br />
-- After the configuration is done, the commands below should be run: <br /> <br />
-Local Image:       docker build -t myimage . <br />
-Docker Hub Image:  docker build -t dockerhubusername/myimage . <br />
-Running Container: docker run -d -p 8888:8888 --name mycontainer myimage <br /><br />
+- After the configuration is done, one of the commands below should be run: <br /><br />
+For Local Image:       docker build -t myimage . <br />
+For Docker Hub Image:  docker build -t dockerhubusername/myimage . <br /><br />
 
 Docker Hub Images: <br />
 https://hub.docker.com/repository/docker/ahmetyeniceri/mmv2-auth-microservice/general <br />
