@@ -26,7 +26,7 @@ Redis: docker run --name microservice-redis -p 6379:6379 -d redis
 Redis GUI (RedisInsight): docker run -d --name redisinsight -p 8001:8001 redislabs/redisinsight
 <br /><br />
 
-___ Creating Dockers Images for Projects ___ <br />
+___ Creating Docker Images for Projects ___ <br />
 
 1) Maven Plugin Approach (auth-microservice & user-microservice) <br />
 - application.properties file better to be UTF-8
