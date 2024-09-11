@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-microservice
+  labels:
+    app: user-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-microservice
+  template:
+    metadata:
+      labels:
+        app: user-microservice
+    spec:
+      containers:
+        - name: user-microservice
+          image: ahmetyeniceri/mmv2-user-microservice:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8086
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: 'mongodb-service'
+            - name: SPRING_DATA_MONGODB_PORT
+              value: '27017'
+            - name: SPRING_DATA_MONGODB_DATABASE
+              value: 'userdb'
+            - name: SPRING_DATA_MONGODB_USERNAME
+              value: 'user'
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              value: '123'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-microservice
+spec:
+  selector:
+    app: user-microservice
+  ports:
+    - protocol: TCP
+      port: 8086
+      targetPort: 8086
+  type: LoadBalancer
