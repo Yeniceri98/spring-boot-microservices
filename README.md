@@ -49,4 +49,17 @@ https://hub.docker.com/repository/docker/ahmetyeniceri/git-config-server-0.0.1/g
 
 NOTES: 
 - Images can be push to Dockerhub in Docker Desktop. <br />
-- In both approaches, Docker Compose can be used for easier management.
+- In both approaches, Docker Compose can be used for easier management. <br /><br />
+
+___ Kubernetes - Google Cloud ___ <br />
+
+gcloud container clusters get-credentials cluster-name --region us-central1 --project project-name
+<br />
+
+kubectl apply -f deployment-service.yaml
+<br />
+
+kubectl get deployment	--->  Deployment check <br />
+kubectl get service 	--->  Service check <br />
+kubectl get pods		--->  Pod check <br />
+kubectl get rs			--->  ReplicaSet check <br />
